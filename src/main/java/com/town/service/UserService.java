@@ -1,6 +1,5 @@
 package com.town.service;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import com.town.exception.AlreadyRegisteredEmailException;
@@ -25,8 +24,13 @@ public class UserService {
         if (savedUser != null) {
             throw new AlreadyRegisteredEmailException("["+userRegisterForm.getEmail()+"] 이미 사용중인 이메일입니다.");
         }
-        User user = new User();
-        BeanUtils.copyProperties(userRegisterForm, user);   // userRegisterForm의 변수명과 user의 변수명이 같으면 복사된다.
+        User.UserBuilder builder = new User.UserBuilder(userRegisterForm.getId(), userRegisterForm.getPassword(), userRegisterForm.getName(),
+        		userRegisterForm.getEmail(), userRegisterForm.getPhone());
+        builder.zipcode(userRegisterForm.getZipcode())
+        	   .basicAddress(userRegisterForm.getBasicAddress())
+        	   .detailAddress(userRegisterForm.getDetailAddress());
+        User user = builder.build();
+
         userMapper.insertUser(user);
     }
 }

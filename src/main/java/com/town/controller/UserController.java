@@ -18,8 +18,8 @@ import com.town.service.UserService;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequestMapping("/user")
 @RequiredArgsConstructor
+@RequestMapping("/user")
 public class UserController {
     private final UserService userService;
 
@@ -47,4 +47,10 @@ public class UserController {
         }
         return "redirect:/post/list";
     }
+
+    @GetMapping("/login")
+    public String getLoginForm() {
+    	return "login-form";
+    }
+
 }
