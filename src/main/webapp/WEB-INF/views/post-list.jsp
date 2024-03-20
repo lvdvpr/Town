@@ -12,7 +12,7 @@
 <div class="container-fluid">
 
     <h3 style="text-align:center; margin-top: 30px;">전체 글</h3>
-    <button class="btn btn-primary" style="margin-left: 10px; font-size: 17px;">게시글 등록</button>
+    <a href="form" class="btn btn-primary" style="margin-left: 10px; font-size: 17px;">게시글 등록</a>
 
     <hr style="height: 5px; background-color: black;">
 
