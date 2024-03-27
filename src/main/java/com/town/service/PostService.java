@@ -2,10 +2,13 @@ package com.town.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.town.dto.PostDto;
+import com.town.dto.PostListDto;
 import com.town.mapper.PostMapper;
 import com.town.vo.Post;
 import com.town.vo.PostFile;
@@ -16,6 +19,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class PostService {
     private final PostMapper postMapper;
+
+    public List<PostListDto> getPostList() {
+
+    	return postMapper.getPostList();
+    }
 
     public void insertPost(PostDto postDto) throws IOException {
     	if (postDto.getFile().get(0).isEmpty()) {

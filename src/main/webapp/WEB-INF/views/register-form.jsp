@@ -66,6 +66,19 @@
                     <label for="detailAddress" class="form-label">상세주소</label>
                     <input type="text" class="form-control" id="detailAddress" name="detailAddress" placeholder="상세 주소 입력" maxLength="100"/>
                 </div>
+                <div class="mb-3" style="display:none;">
+                	<label for="roleName" class="form-check-lavel">권한설정</label>
+					<div>
+						<div class="form-check form-check-inline">
+							<input type="radio" class="form-check-input" name="roleName" value="ROLE_USER" checked />
+							<label class="form-check-label">사용자</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input type="radio" class="form-check-input" name="roleName" value="ROLE_ADMIN" onclick="return(false);"/>
+							<label class="form-check-label">관리자</label>
+						</div>
+					</div>
+                </div>
                 <div class="text-center mt-5">
                 	<button type="submit" class="btn btn-lg btn-outline-primary">회원가입</button>
                 </div>

@@ -1,7 +1,9 @@
 package com.town.vo;
 
 import java.sql.Timestamp;
+
 import org.apache.ibatis.type.Alias;
+
 import lombok.Getter;
 
 @Alias("Post")
@@ -9,34 +11,20 @@ import lombok.Getter;
 public class Post {
 
 	// final 키워드로 필드들을 불변 객체로 만든다.
-    private final int postNo;
-    private final String title;
-    private final String content;
-    private final int writerNo;
-    private final int readCount;
-    private final int suggestionCount;
-    private final int commentCount;
-    private final int postDeleted;
-    private final Timestamp postCreatedDate;
-    private final Timestamp postUpdatedDate;
-    private final Timestamp postDeletedDate;
-    private final int fileAttached;
+    private int postNo;
+    private String title;
+    private String content;
+    private int writerNo;
+    private int readCount;
+    private int suggestionCount;
+    private int commentCount;
+    private int postDeleted;
+    private Timestamp postCreatedDate;
+    private Timestamp postUpdatedDate;
+    private Timestamp postDeletedDate;
+    private int fileAttached;
 
-   // private 생성자 - 외부에서 호출되는 것이 아닌 빌더 클래스에서만 호출되기 때문에 private 접근제한자를 사용한다.
-    private Post(PostBuilder builder) {
-    	this.postNo = builder.postNo;
-    	this.title = builder.title;
-    	this.content = builder.content;
-    	this.writerNo = builder.writerNo;
-    	this.readCount = builder.readCount;
-    	this.suggestionCount = builder.suggestionCount;
-    	this.commentCount = builder.commentCount;
-    	this.postDeleted = builder.postDeleted;
-    	this.postCreatedDate = builder.postCreatedDate;
-    	this.postUpdatedDate = builder.postUpdatedDate;
-    	this.postDeletedDate = builder.postDeletedDate;
-    	this.fileAttached = builder.fileAttached;
-    }
+    private Post() {}
 
     // 정적 내부 빌더 클래스
     public static class PostBuilder {
@@ -105,5 +93,22 @@ public class Post {
         	return new Post(this); // 빌더 객체 자신을 넘긴다.
         }
     }
+
+    // private 생성자 - 외부에서 호출되는 것이 아닌 빌더 클래스에서만 호출되기 때문에 private 접근제한자를 사용한다.
+    private Post(PostBuilder builder) {
+    	this.postNo = builder.postNo;
+    	this.title = builder.title;
+    	this.content = builder.content;
+    	this.writerNo = builder.writerNo;
+    	this.readCount = builder.readCount;
+    	this.suggestionCount = builder.suggestionCount;
+    	this.commentCount = builder.commentCount;
+    	this.postDeleted = builder.postDeleted;
+    	this.postCreatedDate = builder.postCreatedDate;
+    	this.postUpdatedDate = builder.postUpdatedDate;
+    	this.postDeletedDate = builder.postDeletedDate;
+    	this.fileAttached = builder.fileAttached;
+    }
+
 
 }

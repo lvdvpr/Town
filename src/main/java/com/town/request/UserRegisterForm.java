@@ -1,9 +1,7 @@
 package com.town.request;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 @Data
@@ -22,4 +20,5 @@ public class UserRegisterForm {
     private String zipcode;
     private String basicAddress;
     private String detailAddress;
+    private String roleName;
 }

@@ -1,7 +1,5 @@
 package com.town.controller;
 
-import javax.validation.Valid;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +13,7 @@ import com.town.exception.AlreadyRegisteredUserIdException;
 import com.town.request.UserRegisterForm;
 import com.town.service.UserService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @Controller
@@ -45,12 +44,8 @@ public class UserController {
             errors.rejectValue("email", null, "이미 사용중인 이메일입니다.");
             return "register-form";
         }
-        return "redirect:/post/list";
+        return "redirect:/login";
     }
 
-    @GetMapping("/login")
-    public String getLoginForm() {
-    	return "login-form";
-    }
 
 }

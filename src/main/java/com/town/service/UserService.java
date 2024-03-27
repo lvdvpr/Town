@@ -1,5 +1,6 @@
 package com.town.service;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.town.exception.AlreadyRegisteredEmailException;
@@ -14,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserService {
 	private final UserMapper userMapper;
+	private final BCryptPasswordEncoder passwordEncoder;
 
     public void registerUser(UserRegisterForm userRegisterForm) {
         User savedUser = userMapper.getUserById(userRegisterForm.getId());
@@ -24,8 +26,8 @@ public class UserService {
         if (savedUser != null) {
             throw new AlreadyRegisteredEmailException("["+userRegisterForm.getEmail()+"] 이미 사용중인 이메일입니다.");
         }
-        User.UserBuilder builder = new User.UserBuilder(userRegisterForm.getId(), userRegisterForm.getPassword(), userRegisterForm.getName(),
-        		userRegisterForm.getEmail(), userRegisterForm.getPhone());
+        User.UserBuilder builder = new User.UserBuilder(userRegisterForm.getId(), passwordEncoder.encode(userRegisterForm.getPassword()), userRegisterForm.getName(),
+        		userRegisterForm.getEmail(), userRegisterForm.getPhone(), userRegisterForm.getRoleName());
         builder.zipcode(userRegisterForm.getZipcode())
         	   .basicAddress(userRegisterForm.getBasicAddress())
         	   .detailAddress(userRegisterForm.getDetailAddress());
