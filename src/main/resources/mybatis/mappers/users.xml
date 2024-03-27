@@ -3,20 +3,28 @@
 <mapper namespace="com.town.mapper.UserMapper">
     <insert id="insertUser" parameterType="User">
         insert into users
-            (user_id, user_password, user_name, user_email, user_phone, user_zipcode, user_basic_address, user_detail_address)
+            (user_id, user_password, user_name, user_email, user_phone, user_zipcode, user_basic_address, user_detail_address, user_role_name)
         values
-            (#{id}, #{password}, #{name}, #{email}, #{phone}, #{zipcode}, #{basicAddress}, #{detailAddress})
+            (#{id}, #{password}, #{name}, #{email}, #{phone}, #{zipcode}, #{basicAddress}, #{detailAddress}, #{roleName})
     </insert>
 
     <select id="getUserById" parameterType="String" resultType="User">
-        select *
+        select
+        	user_no 		as userNo,
+        	user_id 		as id,
+        	user_password 	as password,
+        	user_name		as name,
+        	user_email		as email,
+        	user_phone		as phone,
+        	user_role_name	as roleName,
+        	user_status		as userStatus
         from users
-        where user_id = #{value}
+        where user_id = #{id}
     </select>
 
     <select id="getUserByEmail" parameterType="String" resultType="User">
         select *
         from users
-        where user_email = #{value}
+        where user_email = #{email}
     </select>
 </mapper>

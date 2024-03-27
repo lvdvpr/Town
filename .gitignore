@@ -20,6 +20,8 @@ local.properties
 .loadpath
 .recommenders
 application.yml
+admin-register-form.jsp
+AdminController.java
 
 # External tool builders
 .externalToolBuilders/

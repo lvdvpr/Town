@@ -15,7 +15,7 @@
 	</div>
 	<div class="row mb-3">
 		<div class="col-12 border bg-light p-4">
-			<form id="form-login" method="post" action="login">
+			<form id="form-login" method="post" action="/loginProc">
 				<div class="mb-3 mt-3">
 					<label for="id" class="form-label">아이디</label>
 					<input type="text" class="form-control" id="id" name="id" />

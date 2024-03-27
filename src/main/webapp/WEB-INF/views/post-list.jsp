@@ -62,18 +62,26 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="text-center" colspan="7"> 게시글 정보가 없습니다. </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+            <c:choose>
+            	<c:when test="${empty postDtoList }">
+	                <tr>
+	                    <td class="text-center" colspan="7"> 게시글 정보가 없습니다. </td>
+	                </tr>
+	            </c:when>
+	            <c:otherwise>
+		            <c:forEach items="${postDtoList}" var="post">
+		                <tr>
+		                    <td><input type="checkbox" id="checkbox-all-toggle"></td>
+		                    <td>${post.postNo }</td>
+		                    <td>${post.title }</td>
+		                    <td>으아아아아</td>
+		                    <td>${post.postCreatedDate }</td>
+		                    <td>${post.suggestionCount }</td>
+		                    <td>${post.readCount }</td>
+		                </tr>
+		            </c:forEach>
+		        </c:otherwise>
+            </c:choose>
             </tbody>
         </table>
     </div>

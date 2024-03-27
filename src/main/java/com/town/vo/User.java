@@ -10,20 +10,22 @@ import lombok.Getter;
 @Getter
 public class User {
 
-    private final int userNo;
-    private final String id;
-    private final String password;
-    private final String name;
-    private final String email;
-    private final String phone;
-    private final String zipcode;
-    private final String basicAddress;
-    private final String detailAddress;
-    private final String isAdmin;
-    private final String userStatus;
-    private final Timestamp userCreatedDate;
-    private final Timestamp userUpdatedDate;
-    private final Timestamp userDeletedDate;
+    private int userNo;
+    private String id;
+    private String password;
+    private String name;
+    private String email;
+    private String phone;
+    private String zipcode;
+    private String basicAddress;
+    private String detailAddress;
+    private String roleName;
+    private String userStatus;
+    private Timestamp userCreatedDate;
+    private Timestamp userUpdatedDate;
+    private Timestamp userDeletedDate;
+
+    private User() {}
 
     private User(UserBuilder builder) {
     	this.userNo = builder.userNo;
@@ -35,7 +37,7 @@ public class User {
     	this.zipcode = builder.zipcode;
     	this.basicAddress = builder.basicAddress;
     	this.detailAddress = builder.detailAddress;
-    	this.isAdmin = builder.isAdmin;
+    	this.roleName = builder.roleName;
     	this.userStatus = builder.userStatus;
     	this.userCreatedDate = builder.userCreatedDate;
     	this.userUpdatedDate = builder.userUpdatedDate;
@@ -52,18 +54,19 @@ public class User {
         private String zipcode;
         private String basicAddress;
         private String detailAddress;
-        private String isAdmin;
+        private String roleName;
         private String userStatus;
         private Timestamp userCreatedDate;
         private Timestamp userUpdatedDate;
         private Timestamp userDeletedDate;
 
-        public UserBuilder(String id, String password, String name, String email, String phone) {
+        public UserBuilder(String id, String password, String name, String email, String phone, String roleName) {
         	this.id = id;
            	this.password = password;
         	this.name = name;
         	this.email = email;
         	this.phone = phone;
+        	this.roleName = roleName;
         }
         public UserBuilder userNo(int userNo) {
         	this.userNo = userNo;
@@ -79,10 +82,6 @@ public class User {
         }
         public UserBuilder detailAddress(String detailAddress) {
         	this.detailAddress = detailAddress;
-        	return this;
-        }
-        public UserBuilder isAdmin(String isAdmin) {
-        	this.isAdmin = isAdmin;
         	return this;
         }
         public UserBuilder userStatus(String userStatus) {

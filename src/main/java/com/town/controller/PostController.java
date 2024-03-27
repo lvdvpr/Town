@@ -1,13 +1,16 @@
 package com.town.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.town.dto.PostDto;
+import com.town.dto.PostListDto;
 import com.town.service.PostService;
 
 import lombok.RequiredArgsConstructor;
@@ -19,13 +22,14 @@ public class PostController {
     private final PostService postService;
 
     @GetMapping("/list")
-    public String getList() {
-
+    public String getPostList(Model model) {
+    	List<PostListDto> postDtoList = postService.getPostList();
+    	model.addAttribute("postDtoList", postDtoList);
         return "post-list";
     }
 
     @GetMapping("/form")
-    public String getForm() {
+    public String getPostForm() {
 
         return "post-form";
     }
