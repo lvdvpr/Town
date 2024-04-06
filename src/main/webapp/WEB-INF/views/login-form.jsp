@@ -18,15 +18,15 @@
 			<form id="form-login" method="post" action="/loginProc">
 				<div class="mb-3 mt-3">
 					<label for="id" class="form-label">아이디</label>
-					<input type="text" class="form-control" id="id" name="id" />
+					<input type="text" class="form-control" id="id" name="id" maxLength="12"/>
 				</div>
 				<div class="mb-3">
 					<label for="password" class="form-label">비밀번호</label>
-					<input type="password" class="form-control" id="password" name="password" />
+					<input type="password" class="form-control" id="password" name="password" maxLength="16"/>
 				</div>
 				<div class="text-center mt-5">
 	 				<a href="/post/list" class="btn btn-outline-secondary mx-1">취소</a>
-					<button type="submit" class="btn btn-outline-primary mx-1">로그인</button>
+					<button type="submit" id="loginBtn" class="btn btn-outline-primary mx-1">로그인</button>
 				</div>
 			</form>
 		</div>
