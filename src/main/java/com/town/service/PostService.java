@@ -25,12 +25,12 @@ public class PostService {
     	return postMapper.getPostList();
     }
 
-    public void insertPost(PostDto postDto) throws IOException {
+    public void insertPost(int userNo, PostDto postDto) throws IOException {
     	if (postDto.getFile().get(0).isEmpty()) {
     		// 파일 없음
     		postDto.setFileAttached(0);
 
-    		Post.PostBuilder builder = new Post.PostBuilder(postDto.getTitle(), postDto.getContent());
+    		Post.PostBuilder builder = new Post.PostBuilder(postDto.getTitle(), postDto.getContent(), userNo);
     		builder.fileAttached(postDto.getFileAttached());
 
     		Post post = builder.build();
@@ -39,7 +39,7 @@ public class PostService {
     	} else {
     		// 파일 있음
     		postDto.setFileAttached(1);
-    		Post.PostBuilder builder = new Post.PostBuilder(postDto.getTitle(), postDto.getContent());
+    		Post.PostBuilder builder = new Post.PostBuilder(postDto.getTitle(), postDto.getContent(), userNo);
     		builder.fileAttached(postDto.getFileAttached());
 
     		Post post = builder.build();

@@ -3,6 +3,7 @@ package com.town.controller;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.town.dto.PostDto;
 import com.town.dto.PostListDto;
+import com.town.security.LoginUser;
 import com.town.service.PostService;
 
 import lombok.RequiredArgsConstructor;
@@ -35,8 +37,8 @@ public class PostController {
     }
 
     @PostMapping("/form")
-    public String insertPost(PostDto postDto) throws IOException {
-    	postService.insertPost(postDto);
+    public String insertPost(@AuthenticationPrincipal LoginUser loginUser, PostDto postDto) throws IOException {
+    	postService.insertPost(loginUser.getUserNo(), postDto);
     	return "redirect:list";
     }
 

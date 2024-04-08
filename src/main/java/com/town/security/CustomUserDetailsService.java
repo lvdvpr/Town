@@ -21,8 +21,6 @@ public class CustomUserDetailsService implements UserDetailsService{
 
 		User user = userMapper.getUserById(id);
 
-		System.out.println("출력"+user.getPassword());
-
 		if (user == null) {
 			throw new UsernameNotFoundException("계정이 존재하지 않습니다.");
 		}

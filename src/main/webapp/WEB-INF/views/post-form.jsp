@@ -37,5 +37,23 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+$(function() {
+	$('#form-post').submit(function() {
+		const title = $('#title').val().trim();
+		const content = $('#content').val().trim();
+
+		if(title == "") {
+			alert("제목을 입력하세요");
+			return false;
+		}
+		if(content == "") {
+			alert("내용을 입력하세요");
+			return false;
+		}
+		return true;
+	});
+})
+</script>
 </body>
 </html>
