@@ -74,7 +74,7 @@
 		                    <td><input type="checkbox" id="checkbox-all-toggle"></td>
 		                    <td>${post.postNo }</td>
 		                    <td>${post.title }</td>
-		                    <td>으아아아아</td>
+		                    <td>${post.userName }</td>
 		                    <td><fmt:formatDate pattern="yyyy.MM.dd" value="${post.postCreatedDate }"/></td>
 		                    <td>${post.suggestionCount }</td>
 		                    <td>${post.readCount }</td>

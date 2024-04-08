@@ -31,7 +31,7 @@ public class Post {
     	private int postNo;
     	private final String title;
     	private final String content;
-    	private int writerNo;
+    	private final int writerNo;
     	private int readCount;
     	private int suggestionCount;
     	private int commentCount;
@@ -42,18 +42,15 @@ public class Post {
         private int fileAttached;
 
         // 필수 파라미터는 빌더 생성자로 받게 한다.
-        public PostBuilder(String title, String content) {
+        public PostBuilder(String title, String content, int writerNo) {
         	this.title = title;
         	this.content = content;
+        	this.writerNo = writerNo;
         }
 
         // 선택 파라미터는 각 메서드를 통해 정의한다.
         public PostBuilder postNo(int postNo) {
         	this.postNo = postNo;
-        	return this;
-        }
-        public PostBuilder writerNo(int writerNo) {
-        	this.writerNo = writerNo;
         	return this;
         }
         public PostBuilder readCount(int readCount) {

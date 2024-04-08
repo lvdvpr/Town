@@ -16,13 +16,9 @@ public class UserService {
 	private final UserMapper userMapper;
 	private final BCryptPasswordEncoder passwordEncoder;
 
-	public String findUser(String userId) {
-		Optional<User> savedUser = Optional.ofNullable(userMapper.getUserById(userId));
-		if (savedUser.isEmpty()) {
-			return "ok";
-		} else {
-			return "no";
-		}
+	public User getUserById(String userId) {
+		User savedUser = userMapper.getUserById(userId);
+		return savedUser;
 	}
 
     public void registerUser(UserRegisterForm userRegisterForm) {

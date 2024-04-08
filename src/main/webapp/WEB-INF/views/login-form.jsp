@@ -35,7 +35,42 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript">
+$(function() {
+	$('#form-login').submit(function() {
+		const id = $('#id').val().trim();
+		const password = $('#password').val().trim();
 
+		if(id === "") {
+			alert("아이디를 입력해주세요");
+			return false;
+		} else if (id.includes(" ")) {
+			alert("아이디에 공백을 입력할 수 없습니다");
+			return false;
+		}
+		if(password === "") {
+			alert("비밀번호를 입력해주세요");
+			return false;
+		} else if (password.includes(" ")) {
+			alert("비밀번호에 공백을 입력할 수 없습니다");
+			return false;
+		}
+
+		const data = {
+			id : id,
+			password : password
+		}
+
+		$.ajax ({
+			type : 'POST',
+			url : '/api/login',
+			data : JSON.stringify(data),
+			contentType: 'application/json',
+			error : function() {
+				alert("아이디 또는 비밀번호가 일치하지 않습니다");
+			}
+		})
+	});
+})
 </script>
 </body>
 </html>

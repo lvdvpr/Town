@@ -17,6 +17,7 @@ public class PostListDto {
 
 	private int postNo;
 	private String title;
+	private String userName;
 	private int fileAttached;		  // 파일이 담겨있는지 여부를 나타내는 필드
 	private int readCount;
 	private int suggestionCount;
@@ -25,11 +26,12 @@ public class PostListDto {
 
 	public PostListDto() {}
 
-	public PostListDto(int postNo, String title, int fileAttached, int writeNo, int readCount, int suggestionCount,
+	public PostListDto(int postNo, String title, String userName, int fileAttached, int writeNo, int readCount, int suggestionCount,
 			int commentCount, Timestamp postCreatedDate) {
 		super();
 		this.postNo = postNo;
 		this.title = title;
+		this.userName = userName;
 		this.fileAttached = fileAttached;
 		this.readCount = readCount;
 		this.suggestionCount = suggestionCount;

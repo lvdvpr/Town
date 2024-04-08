@@ -1,5 +1,6 @@
 package com.town.controller;
 
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import com.town.exception.AlreadyRegisteredEmailException;
 import com.town.exception.AlreadyRegisteredUserIdException;
 import com.town.request.UserRegisterForm;
 import com.town.service.UserService;
+import com.town.vo.User;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -26,12 +28,12 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/checkUserId")
-    public ResponseEntity<String> checkUserId(@RequestParam String userId) {
-    	String checkResult = userService.findUser(userId);
-    	if ("ok".equals(checkResult)) {
-    		return new ResponseEntity<>(HttpStatus.OK);
-    	} else {
+    public ResponseEntity<User> checkUserId(@RequestParam String userId) {
+    	User savedUser = userService.getUserById(userId);
+    	if (savedUser != null) {
     		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    	} else {
+    		return new ResponseEntity<>(HttpStatus.OK);
     	}
     }
 
