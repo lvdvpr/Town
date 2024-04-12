@@ -15,5 +15,5 @@ public class PostFile {
 	private String storedFileName;		// 저장을 위한 파일 이름
 	private Timestamp fileCreatedDate;
 	private Timestamp fileDeletedDate;
-	private int fileDeleted;
+	private String fileDeleted;
 }
