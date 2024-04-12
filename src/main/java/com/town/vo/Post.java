@@ -18,7 +18,7 @@ public class Post {
     private int readCount;
     private int suggestionCount;
     private int commentCount;
-    private int postDeleted;
+    private String postDeleted;
     private Timestamp postCreatedDate;
     private Timestamp postUpdatedDate;
     private Timestamp postDeletedDate;
@@ -35,7 +35,7 @@ public class Post {
     	private int readCount;
     	private int suggestionCount;
     	private int commentCount;
-    	private int postDeleted;
+    	private String postDeleted;
     	private Timestamp postCreatedDate;
         private Timestamp postUpdatedDate;
         private Timestamp postDeletedDate;
@@ -65,7 +65,7 @@ public class Post {
         	this.commentCount = commentCount;
         	return this;
         }
-        public PostBuilder postDeleted(int postDeleted) {
+        public PostBuilder postDeleted(String postDeleted) {
         	this.postDeleted = postDeleted;
         	return this;
         }

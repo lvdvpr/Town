@@ -27,7 +27,45 @@
    		 	u.user_name as userName
    		from posts p, users u
    		where p.post_writer_no = u.user_no
+   		and p.post_deleted = 'N'
 		order by post_no desc
     </select>
 
+    <select id="getPostDtoByPostNo" parameterType="int" resultType="PostDto">
+    	select
+    		p.post_no as postNo,
+    		p.post_title as title,
+    		p.post_content as content,
+    		p.post_read_count as readCount,
+    		p.post_suggestion_count as suggestionCount,
+    		p.post_comment_count as commentCount,
+			p.post_file_attached as fileAttached,
+    		p.post_created_date as postCreatedDate,
+    		p.post_deleted as postDeleted,
+    		p.post_writer_no as writerNo,
+    		u.user_name as name
+    	from posts p, users u
+    	where p.post_no = #{postNo}
+    	and p.post_deleted = 'N'
+    	and p.post_writer_no = u.user_no
+    </select>
+
+    <update id="updateReadCount" parameterType="int">
+    	update posts
+    	set post_read_count = post_read_count + 1
+    	where post_no = #{postNo}
+    </update>
+
+    <update id="deletePostByPostNo" parameterType="int">
+    	update posts a, post_files b
+    	set a.post_deleted = 'Y', b.file_deleted = 'Y'
+    	where a.post_no = #{postNo}
+    	and a.post_no = b.post_no
+    </update>
+
+	<select id="getPostFile" parameterType="int" resultType="PostFile">
+		select *
+		from post_files
+		where post_no = #{postNo}
+	</select>
 </mapper>

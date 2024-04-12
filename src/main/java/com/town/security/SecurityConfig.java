@@ -32,7 +32,7 @@ public class SecurityConfig {
                         		 new AntPathRequestMatcher("/user/register"),
                         		 new AntPathRequestMatcher("/post/list")
                 		).permitAll()
-                .requestMatchers(new AntPathRequestMatcher("/post/form")).hasRole("USER")
+                .requestMatchers(new AntPathRequestMatcher("/post/form")).hasAnyRole("USER", "ADMIN")
                 .anyRequest().permitAll()
             .and()
                 .formLogin()

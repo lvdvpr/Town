@@ -24,8 +24,8 @@
 					<textarea class="form-control" id="content" name="content" rows="10" placeholder="내용을 입력하세요"></textarea>
 				</div>
 				<div class="mb-3">
-				    <label for="attachedFile" class="form-label">첨부파일</label>
-				    <input type="file" class="form-control" id="file" name="file" multiple>
+				    <label for="attachedFile" class="form-label">첨부파일 (최대 5개)</label>
+				    <input type="file" class="form-control" id="files" name="files" multiple onchange="limitFiles(this, 5)">
 				</div>
 				<div class="text-center mt-5">
 					<a href="list" class="btn btn-outline-secondary mx-1">목록</a>
@@ -54,6 +54,13 @@ $(function() {
 		return true;
 	});
 })
+
+function limitFiles(fileInput, maxFiles) {
+  if (fileInput.files.length > maxFiles) {
+    alert("최대" + maxFiles +"개의 파일만 선택할 수 있습니다.");
+    fileInput.value = ''; // 선택한 파일 초기화
+  }
+}
 </script>
 </body>
 </html>
