@@ -22,7 +22,7 @@ public class Post {
     private Timestamp postCreatedDate;
     private Timestamp postUpdatedDate;
     private Timestamp postDeletedDate;
-    private int fileAttached;
+    private String fileAttached;
 
     private Post() {}
 
@@ -39,7 +39,7 @@ public class Post {
     	private Timestamp postCreatedDate;
         private Timestamp postUpdatedDate;
         private Timestamp postDeletedDate;
-        private int fileAttached;
+        private String fileAttached;
 
         // 필수 파라미터는 빌더 생성자로 받게 한다.
         public PostBuilder(String title, String content, int writerNo) {
@@ -81,7 +81,7 @@ public class Post {
         	this.postDeletedDate = postDeletedDate;
         	return this;
         }
-        public PostBuilder fileAttached(int fileAttached) {
+        public PostBuilder fileAttached(String fileAttached) {
         	this.fileAttached = fileAttached;
         	return this;
         }

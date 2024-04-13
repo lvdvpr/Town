@@ -28,7 +28,7 @@ public class PostDto {
 	private int readCount;
 	private int suggestionCount;
 	private int commentCount;
-	private int fileAttached;		  // 파일이 담겨있는지 여부를 나타내는 필드
+	private String fileAttached;		  // 파일이 담겨있는지 여부를 나타내는 필드
 	private List<MultipartFile> files; // 게시글을 작성할 때 파일 자체를 담기 위한 필드
 	private Timestamp postCreatedDate;
 	private String postDeleted;
