@@ -55,7 +55,7 @@
 							</c:when>
 							<c:otherwise>
 								<c:forEach var="file" items="${postFile }">
-									<a href="download?originalFileName=${file.originalFileName}" class="btn btn-outline-dark btn-sm">${file.originalFileName }<i class="bi bi-download ms-2"></i></a>
+									<a href="download?storedFileName=${file.storedFileName}" class="btn btn-outline-dark btn-sm">${file.originalFileName }<i class="bi bi-download ms-2"></i></a>
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>

@@ -1,7 +1,7 @@
 package com.town.service;
 
-import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -23,12 +23,23 @@ public class PostService {
     	return postMapper.getPostList();
     }
 
-    public void insertPost (int userNo, Post post) {
-    	postMapper.insertPost(post);
-    }
+    public void insertPost (int userNo, PostDto postDto, Map<String, String> fileNamesMap) {
 
-    public void insertFile (PostFile postfile) throws IOException {
-	    	postMapper.insertFile(postfile);
+		Post.PostBuilder builder = new Post.PostBuilder(postDto.getTitle(), postDto.getContent(), userNo);
+		builder.fileAttached(postDto.getFileAttached());
+		Post post = builder.build();
+		postMapper.insertPost(post);
+
+		if ("Y".equals(postDto.getFileAttached())) {
+			for(Map.Entry<String, String> entry : fileNamesMap.entrySet()) {
+	    		// PostFile 세팅
+				PostFile postfile = new PostFile();
+	    		postfile.setOriginalFileName(entry.getValue());
+	    		postfile.setStoredFileName(entry.getKey());
+	    		postfile.setPostNo(post.getPostNo());
+	    		postMapper.insertFile(postfile);
+			}
+		}
     }
 
 	public void updateReadCount(int postNo) {
