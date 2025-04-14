@@ -1,7 +1,6 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark mb-3">
     <div class="container-fluid">
         <a href="/post/list" class="navbar-brand mb-0" style="font-size: 25px;">우리동네 커뮤니티</a>
-
 		<ul class="navbar-nav">
 			<sec:authorize access="isAuthenticated()">
 				<li class="nav-item"><a href="#" class="nav-link" style="font-size: 20px;">

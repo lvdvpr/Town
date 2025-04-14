@@ -31,12 +31,13 @@ public class PostService {
 		postMapper.insertPost(post);
 
 		if ("Y".equals(postDto.getFileAttached())) {
+			// Controller에서 Map자료형에 저장한 저장용 파일이름과 원본파일이름을 가져와서 향상된 for문을 이용해 Postfile객체에 넣는다.
 			for(Map.Entry<String, String> entry : fileNamesMap.entrySet()) {
 	    		// PostFile 세팅
 				PostFile postfile = new PostFile();
 	    		postfile.setOriginalFileName(entry.getValue());
 	    		postfile.setStoredFileName(entry.getKey());
-	    		postfile.setPostNo(post.getPostNo());
+	    		postfile.setPostNo(post.getPostNo());  // 위에 postMapper.insertPost(post);을 통해 게시글을 저장해서 auto Increment된 글번호를 가져옴
 	    		postMapper.insertFile(postfile);
 			}
 		}

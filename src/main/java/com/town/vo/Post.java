@@ -10,7 +10,6 @@ import lombok.Getter;
 @Getter
 public class Post {
 
-	// final 키워드로 필드들을 불변 객체로 만든다.
     private int postNo;
     private String title;
     private String content;
