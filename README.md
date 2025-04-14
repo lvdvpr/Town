@@ -11,7 +11,7 @@
 - ajax를 이용하여 [ID 중복 확인 기능](https://github.com/lvdvpr/Town/blob/main/src/main/webapp/WEB-INF/views/register-form.jsp#L105-L129)을 구현하였습니다.
 - [카카오 우편번호 api](https://github.com/lvdvpr/Town/blob/main/src/main/webapp/WEB-INF/views/register-form.jsp#L152-L160)를 이용하여 주소 검색 기능을 구현하였습니다.
 - [Spring Security](https://github.com/lvdvpr/Town/tree/main/src/main/java/com/town/security)를 적용하여 로그인 기능을 구현하였습니다.
-- 다중 파일 업로드/다운로드 기능을 구현하였습니다. 관련코드 : [FileDownloadView](https://github.com/lvdvpr/Town/blob/main/src/main/java/com/town/view/FileDownloadView.java)
+- 다중 파일 업로드/다운로드 기능을 구현하였습니다. 관련코드 : [FileDownloadView](https://github.com/lvdvpr/Town/blob/main/src/main/java/com/town/view/FileDownloadView.java), [PostController](https://github.com/lvdvpr/Town/blob/branch7/src/main/java/com/town/controller/PostController.java#L55-L100), [PostService](https://github.com/lvdvpr/Town/blob/branch7/src/main/java/com/town/service/PostService.java#L26-L44)
 
 > **사용기술**
 
