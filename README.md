@@ -6,7 +6,7 @@
 
 - spring mvc 구조로 개발하였습니다.
 - 객체의 불변성 유지를 위해 [Builder 패턴](https://github.com/lvdvpr/Town/blob/main/src/main/java/com/town/vo/Post.java)을 적용하였습니다.
-- @ControllerAdvice를 이용하여 하나의 클래스로 모든 컨트롤러에서 발생할 수 있는 예외를 잡고 @ExceptionHandler를 통해 예외의 종류에 따른 메서드를 작성하여 코드의 가독성을 높였습니다. [관련코드](https://github.com/lvdvpr/Town/blob/main/src/main/java/com/town/advice/ExceptionHandlerControllerAdvice.java)
+- [@ControllerAdvice](https://github.com/lvdvpr/Town/blob/main/src/main/java/com/town/advice/ExceptionHandlerControllerAdvice.java)를 이용하여 하나의 클래스로 모든 컨트롤러에서 발생할 수 있는 예외를 잡고 @ExceptionHandler를 통해 예외의 종류에 따른 메서드를 작성하여 코드의 가독성을 높였습니다.
 - 회원가입시, [Bean Validation](https://github.com/lvdvpr/Town/blob/main/src/main/java/com/town/request/UserRegisterForm.java)을 이용하여 유효성 검증을 하였습니다.
 - ajax를 이용하여 [ID 중복 확인 기능](https://github.com/lvdvpr/Town/blob/main/src/main/webapp/WEB-INF/views/register-form.jsp#L105-L129)을 구현하였습니다.
 - [카카오 우편번호 api](https://github.com/lvdvpr/Town/blob/main/src/main/webapp/WEB-INF/views/register-form.jsp#L152-L160)를 이용하여 주소 검색 기능을 구현하였습니다.
