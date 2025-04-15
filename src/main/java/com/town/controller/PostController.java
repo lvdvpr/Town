@@ -88,7 +88,7 @@ public class PostController {
         if (!file.exists()) {
             throw new ApplicationException("[" + storedFileName + "] 파일이 존재하지 않습니다.");
         }
-		/* 요청핸들러메소드를 실행하는 주체는 HandleAdapter인데 최종적인 결과물로 항상 ModelAndView라는걸 DispatcherServlet에 반환해야 한다.
+        /* 요청핸들러메소드를 실행하는 주체는 HandleAdapter인데 최종적인 결과물로 항상 ModelAndView라는걸 DispatcherServlet에 반환해야 한다.
 		ModelAndView에는 Model, viewName, View가 들어있고, View가 전달되었을 때에는 View객체의 render를 실행한다.*/
         ModelAndView mav = new ModelAndView();
         // ModelAndView의 Model에 값 저장
