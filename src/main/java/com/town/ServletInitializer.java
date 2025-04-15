@@ -16,17 +16,17 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ServletInitializer extends SpringBootServletInitializer {
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(TownApplication.class);
-	}
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(TownApplication.class);
+    }
 
-	@Bean
+    @Bean
     public ConfigurableServletWebServerFactory configurableServletWebServerFactory() {
         return new TomcatServletWebServerFactory() {
-        	@Override
-        	protected void postProcessContext(Context context) {
-        		super.postProcessContext(context);
+            @Override
+            protected void postProcessContext(Context context) {
+                super.postProcessContext(context);
                 JspPropertyGroup jspPropertyGroup = new JspPropertyGroup();
                 jspPropertyGroup.addUrlPattern("*.jsp");
                 jspPropertyGroup.setPageEncoding("UTF-8");
@@ -38,8 +38,8 @@ public class ServletInitializer extends SpringBootServletInitializer {
                         jspPropertyGroup);
                 context.setJspConfigDescriptor(new JspConfigDescriptorImpl(
                         Collections.singletonList(jspPropertyGroupDescriptor), Collections.emptyList()));
-        	}
+            }
         };
-	}
+    }
 
 }

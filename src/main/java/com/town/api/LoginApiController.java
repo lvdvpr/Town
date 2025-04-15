@@ -17,17 +17,17 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class LoginApiController {
 
-	private final UserService userService;
-	private final BCryptPasswordEncoder passwordEncoder;
+    private final UserService userService;
+    private final BCryptPasswordEncoder passwordEncoder;
 
-	@PostMapping("/api/login")
-	public ResponseEntity<User> login(@RequestBody LoginForm form) {
-		User savedUser = userService.getUserById(form.getId());
-		if (savedUser == null || !passwordEncoder.matches(form.getPassword(), savedUser.getPassword())) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		} else {
-			return new ResponseEntity<>(HttpStatus.OK);
-		}
+    @PostMapping("/api/login")
+    public ResponseEntity<User> login(@RequestBody LoginForm form) {
+        User savedUser = userService.getUserById(form.getId());
+        if (savedUser == null || !passwordEncoder.matches(form.getPassword(), savedUser.getPassword())) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
 
-	}
+    }
 }

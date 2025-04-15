@@ -12,39 +12,39 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class CustomUserDetailsService implements UserDetailsService{
+public class CustomUserDetailsService implements UserDetailsService {
 
-	private final UserMapper userMapper;
+    private final UserMapper userMapper;
 
-	@Override
-	public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
+    @Override
+    public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
 
-		User user = userMapper.getUserById(id);
+        User user = userMapper.getUserById(id);
 
-		if (user == null) {
-			throw new UsernameNotFoundException("계정이 존재하지 않습니다.");
-		}
-		if ("D".equals(user.getUserStatus())) {
-			throw new UsernameNotFoundException("탈퇴된 계정입니다.");
-		} else if ("N".equals(user.getUserStatus())) {
-			throw new UsernameNotFoundException("휴면 처리된 계정입니다.");
-		} else {
+        if (user == null) {
+            throw new UsernameNotFoundException("계정이 존재하지 않습니다.");
+        }
+        if ("D".equals(user.getUserStatus())) {
+            throw new UsernameNotFoundException("탈퇴된 계정입니다.");
+        } else if ("N".equals(user.getUserStatus())) {
+            throw new UsernameNotFoundException("휴면 처리된 계정입니다.");
+        } else {
 
-			CustomUserDetails userDetails = new CustomUserDetails(
-				user.getUserNo(),
-				user.getId(),
-				user.getPassword(),
-				user.getName(),
-				user.getEmail(),
-				user.getPhone(),
-				user.getUserStatus(),
-				user.getRoleName()
-			);
+            CustomUserDetails userDetails = new CustomUserDetails(
+                    user.getUserNo(),
+                    user.getId(),
+                    user.getPassword(),
+                    user.getName(),
+                    user.getEmail(),
+                    user.getPhone(),
+                    user.getUserStatus(),
+                    user.getRoleName()
+            );
 
-			return userDetails;
-		}
+            return userDetails;
+        }
 
 
-	}
+    }
 
 }

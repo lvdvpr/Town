@@ -1,6 +1,7 @@
 package com.town.service;
 
 import java.util.Optional;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.town.exception.AlreadyRegisteredEmailException;
@@ -13,28 +14,25 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class UserService {
-	private final UserMapper userMapper;
-	private final BCryptPasswordEncoder passwordEncoder;
+    private final UserMapper userMapper;
+    private final BCryptPasswordEncoder passwordEncoder;
 
-	public User getUserById(String userId) {
-		User savedUser = userMapper.getUserById(userId);
-		return savedUser;
-	}
+    public User getUserById(String userId) {
+        User savedUser = userMapper.getUserById(userId);
+        return savedUser;
+    }
 
     public void registerUser(UserRegisterForm userRegisterForm) {
-    	Optional<User> savedUser = Optional.ofNullable(userMapper.getUserById(userRegisterForm.getId()));
+        Optional<User> savedUser = Optional.ofNullable(userMapper.getUserById(userRegisterForm.getId()));
         if (savedUser.isPresent()) {
-            throw new AlreadyRegisteredUserIdException("["+userRegisterForm.getId()+"] 이미 사용중인 아이디입니다.");
+            throw new AlreadyRegisteredUserIdException("[" + userRegisterForm.getId() + "] 이미 사용중인 아이디입니다.");
         }
         savedUser = Optional.ofNullable(userMapper.getUserByEmail(userRegisterForm.getEmail()));
         if (savedUser.isPresent()) {
-            throw new AlreadyRegisteredEmailException("["+userRegisterForm.getEmail()+"] 이미 사용중인 이메일입니다.");
+            throw new AlreadyRegisteredEmailException("[" + userRegisterForm.getEmail() + "] 이미 사용중인 이메일입니다.");
         }
-        User.UserBuilder builder = new User.UserBuilder(userRegisterForm.getId(), passwordEncoder.encode(userRegisterForm.getPassword()), userRegisterForm.getName(),
-        		userRegisterForm.getEmail(), userRegisterForm.getPhone(), userRegisterForm.getRoleName());
-        builder.zipcode(userRegisterForm.getZipcode())
-        	   .basicAddress(userRegisterForm.getBasicAddress())
-        	   .detailAddress(userRegisterForm.getDetailAddress());
+        User.UserBuilder builder = new User.UserBuilder(userRegisterForm.getId(), passwordEncoder.encode(userRegisterForm.getPassword()), userRegisterForm.getName(), userRegisterForm.getEmail(), userRegisterForm.getPhone(), userRegisterForm.getRoleName());
+        builder.zipcode(userRegisterForm.getZipcode()).basicAddress(userRegisterForm.getBasicAddress()).detailAddress(userRegisterForm.getDetailAddress());
         User user = builder.build();
 
         userMapper.insertUser(user);

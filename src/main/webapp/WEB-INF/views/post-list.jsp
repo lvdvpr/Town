@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>우리동네 커뮤니티</title>
 </head>
 <body>
@@ -33,7 +33,9 @@
                     <input type="text" class="form-control form-control-xs" style="width: 250px;">
                 </div>
                 <div class="col-auto">
-                    <button type="button" class="btn" style="background-color:cornflowerblue; color:white; width:70px;" id="btn-search">검색</button>
+                    <button type="button" class="btn" style="background-color:cornflowerblue; color:white; width:70px;"
+                            id="btn-search">검색
+                    </button>
                 </div>
             </form>
         </div>
@@ -51,38 +53,38 @@
                 <col width="7%">
             </colgroup>
             <thead>
-                <tr class="bg-light">
-                    <th><input type="checkbox" id="checkbox-all-toggle"></th>
-                    <th>번호</th>
-                    <th>제목</th>
-                    <th>작성자</th>
-                    <th>작성일시</th>
-                    <th>추천수</th>
-                    <th>조회수</th>
-                </tr>
+            <tr class="bg-light">
+                <th><input type="checkbox" id="checkbox-all-toggle"></th>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일시</th>
+                <th>추천수</th>
+                <th>조회수</th>
+            </tr>
             </thead>
             <tbody>
             <c:choose>
-            	<c:when test="${empty postDtoList }">
-	                <tr>
-	                    <td class="text-center" colspan="7"> 게시글 정보가 없습니다. </td>
-	                </tr>
-	            </c:when>
-	            <c:otherwise>
-		            <c:forEach items="${postDtoList}" var="post">
-		                <tr>
-		                    <td><input type="checkbox" id="checkbox-all-toggle"></td>
-		                    <td>${post.postNo }</td>
-		                    <td>
-		                    	<a href="/post/${post.postNo}">${post.title }</a>
-		                    </td>
-		                    <td>${post.userName }</td>
-		                    <td><fmt:formatDate pattern="yyyy.MM.dd HH:mm" value="${post.postCreatedDate }"/></td>
-		                    <td>${post.suggestionCount }</td>
-		                    <td>${post.readCount }</td>
-		                </tr>
-		            </c:forEach>
-		        </c:otherwise>
+                <c:when test="${empty postDtoList }">
+                    <tr>
+                        <td class="text-center" colspan="7"> 게시글 정보가 없습니다.</td>
+                    </tr>
+                </c:when>
+                <c:otherwise>
+                    <c:forEach items="${postDtoList}" var="post">
+                        <tr>
+                            <td><input type="checkbox" id="checkbox-all-toggle"></td>
+                            <td>${post.postNo }</td>
+                            <td>
+                                <a href="/post/${post.postNo}">${post.title }</a>
+                            </td>
+                            <td>${post.userName }</td>
+                            <td><fmt:formatDate pattern="yyyy.MM.dd HH:mm" value="${post.postCreatedDate }"/></td>
+                            <td>${post.suggestionCount }</td>
+                            <td>${post.readCount }</td>
+                        </tr>
+                    </c:forEach>
+                </c:otherwise>
             </c:choose>
             </tbody>
         </table>
