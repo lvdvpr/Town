@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/common.css" rel="stylesheet">
     <title>우리동네 커뮤니티</title>
 </head>
 <body>
+
 <%@ include file="common/navbar.jsp" %>
 
 <div class="container-fluid">
@@ -93,5 +95,6 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
 </body>
 </html>

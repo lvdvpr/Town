@@ -24,7 +24,7 @@ public class LoginApiController {
     public ResponseEntity<User> login(@RequestBody LoginForm form) {
         User savedUser = userService.getUserById(form.getId());
         if (savedUser == null || !passwordEncoder.matches(form.getPassword(), savedUser.getPassword())) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         } else {
             return new ResponseEntity<>(HttpStatus.OK);
         }
