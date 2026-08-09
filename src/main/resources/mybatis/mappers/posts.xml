@@ -55,10 +55,11 @@
     </update>
 
     <update id="deletePostByPostNo" parameterType="int">
-        update posts a, post_files b
+        update posts a
+        left join post_files b
+        on a.post_no = b.post_no
         set a.post_deleted = 'Y', b.file_deleted = 'Y'
         where a.post_no = #{postNo}
-          and a.post_no = b.post_no
     </update>
 
     <select id="getPostFile" parameterType="int" resultType="PostFile">
